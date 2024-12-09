@@ -1,0 +1,801 @@
+/* ------------------------------------------------------------------------- CSS RESET */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* ------------------------------------------------------------------------- ROOT STYLES */
+
+
+
+:root {
+    --tomato: #be2c2d;
+    --marinara: #841f1f;
+    --basil: #368353;
+    --oregano: #204e31;
+    --parmesan: #e8d6b4;
+    --parmesan-flakes: rgba(232, 214, 180, 0.75);
+    --parmesan-crumbs: rgba(232, 214, 180, 0.5);
+    --mozzarella: #F0ECEB;
+    --body-color: #212427;
+    --cheddar: #fcc565;
+    --napkin: rgba(254, 254, 254, .75);
+    --greasy-napkin: rgba(254, 254, 254, .5);
+    --crust: #9a7e66;
+    --pepper: #212427;
+    --olives: #5f6164;
+    --pepper-less: rgba(33, 36, 39, 0.25);
+    --pepper-ish: rgba(33, 36, 39, 0.5);
+    --shadow: 0 0.5rem 1rem var(--pepper-less);
+    --sm-shadow: 0 0.25rem 0.5rem var(--pepper-ish);
+    --fonts: "Ultra", Brush Script MT, serif;
+    --body-fonts: "Square Slabserif 711 Medium", Trebuchet MS, monospace;
+    --body-h2:"square slabserif 711 bold", Trebuchet MS, monospace;
+}
+
+.dark-mode {
+    --body-color: #F0ECEB;
+}
+
+@font-face {
+    font-family: "Square Slabserif 711 Bold";
+    src: url("https://db.onlinewebfonts.com/c/8601ab2337fbc1ebc8ff976122c38d88?family=Square Slabserif 711 Bold");
+    font-family: "Square Slabserif 711 Light";
+    src: url("https://db.onlinewebfonts.com/c/6af2df2aa22ddfe50ff84f7585d79efc?family=Square Slabserif 711 Light");
+    font-family: "Square Slabserif 711 Medium";
+    src: url("https://db.onlinewebfonts.com/c/0615155f50389cb47f496193b85bb23a?family=Square Slabserif 711 Medium");
+    font-family: "baskerville-display-pt";
+    src: url("https://use.typekit.net/fsd4dsu.css");
+    font-family: "ITC Century Handtooled Std Bold Italic";
+    src: url("https://db.onlinewebfonts.com/t/c0b50292b4824a2a573f339fb982ffec.eot");
+    src: url("https://db.onlinewebfonts.com/t/c0b50292b4824a2a573f339fb982ffec.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/c0b50292b4824a2a573f339fb982ffec.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/c0b50292b4824a2a573f339fb982ffec.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/c0b50292b4824a2a573f339fb982ffec.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/c0b50292b4824a2a573f339fb982ffec.svg#ITC Century Handtooled Std Bold Italic")format("svg");
+}
+
+/* ------------------------------------------------------------------------- body & header */
+
+body {
+    font-family: var(--body-fonts);
+    background: var(--tomato) url(images/brick-wall.png);
+    color: var(--body-color);
+    margin: 0 auto;
+    min-width: 1280px;
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--pepper);
+}
+
+a:focus {
+    background-color: var(--cheddar);
+    color: var(--tomato);
+    outline: 2px solid var(--cheddar);
+    filter: drop-shadow(0 0 5px var(--basil))
+}
+
+::selection {
+    background: var(--cheddar);
+    color: var(--tomato);
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#header-bar {
+    justify-content: space-between;
+    align-items: center;
+    width:-webkit-fill-available;
+    width: -moz-available;
+    padding: 2rem 2rem 4rem 2rem;
+    background-image: linear-gradient(var(--parmesan-flakes) 60%, var(--parmesan-flakes),rgba(0,0,0,0));
+    backdrop-filter: blur(3px);
+    position: fixed;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+#pizzerizzo {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    width: max-content;
+    margin: 0 auto;
+    align-items: center;
+    padding: 2rem;
+}
+
+#pizzerizzo a {
+    padding: 1rem;
+    background-color: var(--greasy-napkin);
+    border-radius: 50%;
+}
+
+#pizzerizzo a img {
+    height: auto;
+    width: 175px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#pizzerizzo a img:hover {
+    filter: drop-shadow(0 0 2px var(--pepper-ish));
+    transform: scale(1.05);
+}
+
+#pizzerizzo h1 {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    font-family: var(--fonts);
+    color: var(--tomato);
+    -webkit-text-stroke: 0.1rem var(--mozzarella);
+    text-shadow: 8px 8px 0px var(--basil);
+    font-size: 4.75rem;
+    padding: 1rem 0;
+}
+
+#nav-bar {
+    text-align: center;
+    max-width: fit-content;
+    margin: 0 auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+#nav-bar a{
+    display: block;
+    text-decoration: none;
+    padding: 1rem 1rem;
+    width: 200px;
+    max-width: 200px;
+    background-color: var(--tomato);
+    color: var(--mozzarella);
+    text-shadow: 5px 3px 5px var(--pepper-less);
+    font-family: var(--fonts);
+    font-size: 2rem;
+    box-shadow: var(--sm-shadow);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#nav-bar a:hover{
+    transform: scale(1.05);
+    background-color: var(--basil);
+    text-shadow: none;
+    box-shadow: inset 0 0.25rem 0.5rem var(--pepper-less), var(--shadow);
+}
+#nav-bar ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px 50px;
+    align-items: center;
+    gap: 1rem 3rem;
+}
+
+#hero-img {
+    background-image: url("images/exterior-day.png");
+    width: 100%;
+    height: 1000px;
+    max-height: 1000px;
+    display: inline-block;
+    position: relative;
+    line-height: 0;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    box-shadow: var(--shadow);
+}
+
+#header-bar.scrolled{
+    display: flex;
+    padding: 1rem 2rem 4rem 2rem;
+    background-image: linear-gradient(var(--parmesan-flakes), var(--parmesan-crumbs) 75%,rgba(0,0,0,0));
+    transition: transform 0.3s ease-in-out;
+    backdrop-filter: none;
+}
+
+#header-bar.scrolled #pizzerizzo {
+    padding: 0;
+    margin: 0;
+}
+
+#header-bar.scrolled #pizzerizzo h1 {
+    font-size: 3rem;
+}
+
+#header-bar.scrolled #pizzerizzo a img {
+    height: auto;
+    width: 75px;
+}
+
+#header-bar.scrolled #nav-bar {
+    margin: 0;
+}
+
+#header-bar.scrolled #nav-bar ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+#header-bar.scrolled #nav-bar a {
+    width: 150px;
+    max-width: 150px;
+    font-size: 1.5rem;
+}
+
+/* ------------------------------------------------------------------------- main content */
+
+#about h2, #menu > h2, #forms h2 {
+    font-size: 4rem;
+    color: var(--basil);
+    font-family: var(--body-h2);
+    font-weight: bold;
+    font-style: normal;
+    line-height: normal;
+    -webkit-text-stroke: .1rem var(--mozzarella);
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    filter: drop-shadow(var(--sm-shadow));
+}
+
+p {
+    font-family: var(--body-fonts);
+    color: var(--body-color);
+    font-size: 1.5rem;
+    display: block;
+    line-height: normal;
+}
+
+/* ------------------------------------------------------------------------- about */
+
+#about {
+    background-color: var(--greasy-napkin);
+    max-width: 1080px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 5rem 3rem;
+    column-gap: 3rem;
+    align-items: center;
+    margin: 6rem auto;
+    box-shadow: var(--shadow);
+    border-radius: 1rem;
+}
+
+#about h2 {
+    grid-column: 1 / -1;
+    text-align: left;
+    
+}
+
+#about p {
+    width: 27ch;
+    text-align: justify;
+}
+
+#about img {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow);
+    justify-self: center;
+    object-fit: cover;
+    object-position: 0 80%;
+}
+
+/* ------------------------------------------------------------------------- menu */
+#menu {
+    background-color: var(--mozzarella);
+    padding: 4rem 0;
+    border-top: double 1rem var(--tomato);
+    border-bottom: double 1rem var(--tomato);
+    box-shadow: var(--shadow);
+}
+
+#menu p {
+    color: var(--tomato);
+}
+
+.menu-grid {
+    width: 1080px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    position: relative;
+    margin: 0 auto;
+}
+
+.menu-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    cursor: pointer;
+    border: 10px double var(--tomato);
+    padding: 1rem;
+    background-color: var(--mozzarella);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--sm-shadow);
+}
+
+.menu-card.expanded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(1);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    z-index: 1;
+}
+
+.menu-image {
+    max-width: 100%;
+    height: auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-name {
+    font-size: 2rem;
+    margin: 10px 0;
+    font-weight: bold;
+    color: var(--tomato);
+    text-transform: uppercase;
+}
+
+.menu-price {
+    font-size: 1rem;
+}
+
+.menu-details {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.menu-card.expanded .menu-details {
+    display: inline-block;
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+#other-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;
+    gap: 1rem;
+    margin: 0 auto;
+    width: 1080px;
+    color: var(--tomato);
+    line-height: 1.5;
+    padding: 2rem 0;
+    font-size: 1.25rem;
+}
+
+#other-menu h3 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#other-menu small {
+    font-family: "Square Slabserif 711 Light", serif;
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.menu-section {
+    border: 10px double var(--tomato);
+    padding: 1rem;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.menu-item-name {
+    text-transform: uppercase;
+}
+
+.menu-item-price {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.menu-dots {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    letter-spacing: 0.5rem;
+}
+
+#kids {
+    grid-row: 1 / -1;
+}
+
+#desserts {
+    grid-row: 2;
+}
+
+#beverages {
+    grid-column: 2 / -1;
+}
+
+#banquet {
+    position: relative;
+    text-align: center;
+    border: 0.25rem solid var(--tomato);
+    overflow: hidden;
+    grid-column: 2 / -1;
+    line-height: 1;
+}
+
+.banner-ribbon {
+    position: absolute;
+    left: -7.5rem;
+    font-family: "Square Slabserif 711 Light", serif;
+    background-color: var(--tomato);
+    color: var(--mozzarella);
+    padding: 0.25rem 5rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-style: italic;
+    transform: rotate(-35deg);
+    width: 200px;
+    text-align: center;
+}
+
+#banquet h2 {
+    font-family: "ITC Century Handtooled Std Bold Italic", serif;
+    font-size: 4rem;
+
+}
+
+#banquet h3 {
+    font-family: "baskerville-display-pt", serif;
+    font-weight: 700;
+    color: var(--tomato);
+    font-style: italic;
+    font-size: 4rem;
+    -webkit-text-stroke: .2rem var(--tomato);
+    transform: scale(.65,1);
+    padding-bottom: 0;
+}
+
+#banquet h4 {
+    font-family: "Lavanderia Sturdy", serif;
+    text-transform: capitalize;
+    font-size: 3rem;
+}
+
+#banquet p {
+    font-family: "Square Slabserif 711 Light", serif;
+    padding-top: 1rem;
+}
+
+/* ------------------------------------------------------------------------- contact & game */
+
+#forms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 3rem;
+    margin: 0 auto;
+}
+
+#contact, #game {
+    margin: 6rem auto;
+    max-width: 1080px;
+}
+
+form {
+    width: 75%;
+    max-width: calc(1080px * 0.5);
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    border: 0.5rem double var(--oregano);
+    border-radius: 5px;
+    background-color: var(--napkin);
+    color: var(--body-color);
+    display: flex;
+    flex-direction: column;
+}
+
+form label, fieldset legend {
+    font-size: 1.5rem;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+label {
+    margin-top: 0.5rem;
+}
+
+.error-message {
+    color: var(--tomato);
+    font-size: 0.8em;
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: none;
+    font-weight: normal;
+    padding: 0.25rem;
+}
+
+input, textarea, fieldset {
+    display: block;
+    margin: 0.75rem auto;
+    padding: 1rem 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--greasy-napkin);
+    border: 0.25rem double var(--basil);
+}
+
+fieldset .error-message {
+    display: inline-flex;
+    margin: 0;
+}
+
+fieldset label {
+    font-size: 1.25rem;
+    text-transform: capitalize;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0 1em;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label:before {
+    content: '';
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 3px solid var(--basil);
+    border-radius: 50%;
+    background-color: var(--napkin);
+    margin: 0.5rem;
+    vertical-align: middle;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+input[type="radio"]:checked + label:before {
+    background-color: var(--basil);
+    border-color: var(--oregano);
+}
+
+
+form button {
+    font-family: var(--body-h2);
+    text-transform: uppercase;
+    padding: 1rem;
+    font-size: 2rem;
+    background-color: var(--basil);
+    color: var(--mozzarella);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin: 0.5rem auto;
+    width: 200px;
+    box-shadow: var(--sm-shadow);
+    transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+form button:hover {
+    background-color: var(--tomato);
+    transform: scale(1.05);
+    text-shadow: none;
+    box-shadow: inset 0 0.25rem 0.5rem var(--pepper-less), var(--shadow);
+}
+
+/* ------------------------------------------------------------------------- game */
+#wheel-container{
+    width: 50%;
+    margin: 0 auto;
+}
+
+#wheel-container img{
+    width: 100%;
+    filter: drop-shadow(var(--shadow));
+}
+
+#mark {
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0px;
+    height: 0px;
+    border-left: 1rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-top: 2rem solid var(--cheddar);
+    z-index: 10;
+    filter: drop-shadow(var(--sm-shadow));
+}
+
+/* ------------------------------------------------------------------------- footer */
+
+footer {
+    background-color: var(--basil);
+
+}
+
+footer p {
+    color: var(--mozzarella);
+    font-size: 2rem;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+/* ------------------------------------------------------------------------- Theme button specific styles */
+#toggle-theme {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 50%;
+    font-size: 3rem;
+    box-sizing: border-box;
+    height: 75px;
+    width: 75px;
+    background-color: var(--greasy-napkin);
+    border-color: transparent;
+}
+
+#toggle-theme:hover {
+    transform: scale(1.25);
+    background-color: var(--pepper-less);
+}
+
+/* ------------------------------------------------------------------------- DARK MODE */
+body.dark-mode {
+    background-color: var(--marinara);
+}
+
+body.dark-mode #header-bar {
+    background-image: linear-gradient(var(--pepper), var(--pepper-ish) 60%, var(--pepper-less),rgba(0,0,0,0));;
+}
+
+body.dark-mode #pizzerizzo a {
+    background-color: var(--napkin);
+}
+
+body.dark-mode #hero-img {
+    background-image: url("images/exterior-night.png");
+}
+
+body.dark-mode #about {
+    background-color: var(--pepper-ish);
+}
+
+body.dark-mode #menu {
+    background-color: var(--marinara);
+}
+
+body.dark-mode #menu p {
+    color: var(--body-color);
+}
+
+
+body.dark-mode .menu-card {
+    background-color: var(--marinara);
+    border-color: var(--mozzarella);
+}
+
+body.dark-mode .menu-name {
+    color: var(--body-color);
+}
+
+body.dark-mode #other-menu {
+    color: var(--body-color);
+}
+
+body.dark-mode .menu-section {
+    border-color: var(--mozzarella);
+}
+
+body.dark-mode #banquet {
+    border-color: var(--mozzarella);
+}
+
+body.dark-mode #banquet h3 {
+    color: var(--body-color);
+    -webkit-text-stroke: .1rem var(--body-color);
+}
+
+body.dark-mode .banner-ribbon {
+    background-color: var(--mozzarella);
+    color: var(--marinara);
+}
+
+body.dark-mode form {
+    background-color: var(--pepper-ish);
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+    color: var(--mozzarella);
+}
+
+body.dark-mode #toggle-theme {
+    background-color: var(--pepper-less) ;
+}
+
+body.dark-mode #toggle-theme:hover {
+    background-color: var(--greasy-napkin) ;
+}
